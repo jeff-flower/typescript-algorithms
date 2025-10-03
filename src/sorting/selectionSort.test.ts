@@ -1,11 +1,11 @@
 import { describe, expect, test } from "vitest";
 
-import { insertionSort } from "./insertionSort";
+import { selectionSort } from "./selectionSort";
 
-describe("Insertion Sort", () => {
-  describe("Interface", () => {
+describe("Selection Sort", () => {
+  describe("Contract", () => {
     test("returns a new array", () => {
-      expect(insertionSort([], "ascending")).toEqual([]);
+      expect(selectionSort([], "ascending")).toEqual([]);
     });
   });
 
@@ -15,7 +15,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, "ascending")).toEqual(expected);
+      expect(selectionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("sorts an array with all items out of place", () => {
@@ -23,7 +23,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, "ascending")).toEqual(expected);
+      expect(selectionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("does nothing to a sorted array", () => {
@@ -31,7 +31,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, "ascending")).toEqual(expected);
+      expect(selectionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("does nothing to a one item array", () => {
@@ -39,7 +39,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1];
 
-      expect(insertionSort(arr, "ascending")).toEqual(expected);
+      expect(selectionSort(arr, "ascending")).toEqual(expected);
     });
   });
 
@@ -49,7 +49,7 @@ describe("Insertion Sort", () => {
 
       const expected = [5, 4, 3, 2, 1];
 
-      expect(insertionSort(arr, "descending")).toEqual(expected);
+      expect(selectionSort(arr, "descending")).toEqual(expected);
     });
 
     test("sorts all items out of place", () => {
@@ -57,7 +57,7 @@ describe("Insertion Sort", () => {
 
       const expected = [5, 4, 3, 2, 1];
 
-      expect(insertionSort(arr, "descending")).toEqual(expected);
+      expect(selectionSort(arr, "descending")).toEqual(expected);
     });
 
     test("does nothing to a one item array", () => {
@@ -65,7 +65,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1];
 
-      expect(insertionSort(arr, "descending")).toEqual(expected);
+      expect(selectionSort(arr, "descending")).toEqual(expected);
     });
   });
 
@@ -75,7 +75,7 @@ describe("Insertion Sort", () => {
 
       const expected = ["a", "b", "c", "d", "e"];
 
-      const result = insertionSort(arr, "ascending");
+      const result = selectionSort(arr, "ascending");
 
       expect(result).toEqual(expected);
     });
@@ -87,7 +87,7 @@ describe("Insertion Sort", () => {
 
       const expected = ["aaa", "aab", "aac", "aad"];
 
-      const result = insertionSort(arr, "ascending");
+      const result = selectionSort(arr, "ascending");
 
       expect(result).toEqual(expected);
     });

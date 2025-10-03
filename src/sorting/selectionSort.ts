@@ -9,15 +9,16 @@ const comparisonMap: Record<
 // Sorts an array of a single type, T
 // The type, T, must support comparison operations (">" and "<")
 // Some known types that support comparisons: number, string, big int
-export const insertionSort = <T>(
+export const selectionSort = <T>(
   arr: T[],
   sortOrder: "ascending" | "descending",
 ): T[] => {
   const result = [...arr];
   const comparator = comparisonMap[sortOrder];
 
-  // after n iterations, the first n elements of the array are sorted
-  // only 1 swap is made per iteration
+  // after n iterations, the first n elements of the array are in the correct order
+  // only 1 swap is made per iteration, making this more efficient than bubble sort
+  // but less efficient than insertion sort
 
   for (let i = 0; i < result.length - 1; i++) {
     let minIndex = i;
