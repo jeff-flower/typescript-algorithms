@@ -1,9 +1,20 @@
-// TODO: make this generic, accept arrays of other types besides number
-export const insertionSort = (
-  arr: number[],
-  comparator: (a: number, b: number) => boolean,
-) => {
+const comparisonMap: Record<
+  "ascending" | "descending",
+  <T>(a: T, b: T) => boolean
+> = {
+  ascending: <T>(a: T, b: T): boolean => a > b,
+  descending: <T>(a: T, b: T): boolean => a < b,
+};
+
+// Sorts an array of a single type, T
+// The type, T, must support comparison operations (">" and "<")
+// Some known types that support comparisons: number, string, big int
+export const insertionSort = <T>(
+  arr: T[],
+  sortOrder: "ascending" | "descending",
+): T[] => {
   const result = [...arr];
+  const comparator = comparisonMap[sortOrder];
 
   // after n iterations, the first n elements of the array are sorted
   // only 1 swap is made per iteration
@@ -25,7 +36,7 @@ export const insertionSort = (
   return result;
 };
 
-const swap = (arr: number[], a: number, b: number) => {
+const swap = <T>(arr: T[], a: number, b: number) => {
   const parkingLot = arr[a];
   arr[a] = arr[b];
   arr[b] = parkingLot;

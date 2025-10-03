@@ -2,22 +2,11 @@ import { describe, expect, test } from "vitest";
 
 import { insertionSort } from "./insertionSort";
 
-const ascendingComparator = (a: number, b: number) => a > b;
-const descendingComparator = (a: number, b: number) => a < b;
-
 describe("Insertion Sort", () => {
   describe("Interface", () => {
     test("returns a new array", () => {
-      const comparator = (a: number, b: number) => a + b > 5;
-
-      expect(insertionSort([], comparator)).toEqual([]);
+      expect(insertionSort([], "ascending")).toEqual([]);
     });
-
-    // test("calls the provided comparator", () => {
-    // create mock method
-    // insertionSort([1,3, 2], mockComparator);
-    // expect mockComparator to have been called
-    // });
   });
 
   describe("Sort ascending", () => {
@@ -26,7 +15,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, ascendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("sorts an array with all items out of place", () => {
@@ -34,7 +23,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, ascendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("does nothing to a sorted array", () => {
@@ -42,7 +31,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1, 2, 3, 4, 5];
 
-      expect(insertionSort(arr, ascendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "ascending")).toEqual(expected);
     });
 
     test("does nothing to a one item array", () => {
@@ -50,7 +39,7 @@ describe("Insertion Sort", () => {
 
       const expected = [1];
 
-      expect(insertionSort(arr, ascendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "ascending")).toEqual(expected);
     });
   });
 
@@ -60,7 +49,7 @@ describe("Insertion Sort", () => {
 
       const expected = [5, 4, 3, 2, 1];
 
-      expect(insertionSort(arr, descendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "descending")).toEqual(expected);
     });
 
     test("sorts all items out of place", () => {
@@ -68,7 +57,7 @@ describe("Insertion Sort", () => {
 
       const expected = [5, 4, 3, 2, 1];
 
-      expect(insertionSort(arr, descendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "descending")).toEqual(expected);
     });
 
     test("does nothing to a one item array", () => {
@@ -76,7 +65,31 @@ describe("Insertion Sort", () => {
 
       const expected = [1];
 
-      expect(insertionSort(arr, descendingComparator)).toEqual(expected);
+      expect(insertionSort(arr, "descending")).toEqual(expected);
+    });
+  });
+
+  describe("Ascending sort with characters", () => {
+    test("sorts 1 item out of place", () => {
+      const arr = ["a", "c", "b", "d", "e"];
+
+      const expected = ["a", "b", "c", "d", "e"];
+
+      const result = insertionSort(arr, "ascending");
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("Ascending sort with strings", () => {
+    test("sorts 1 string out of place", () => {
+      const arr = ["aaa", "aab", "aad", "aac"];
+
+      const expected = ["aaa", "aab", "aac", "aad"];
+
+      const result = insertionSort(arr, "ascending");
+
+      expect(result).toEqual(expected);
     });
   });
 });
