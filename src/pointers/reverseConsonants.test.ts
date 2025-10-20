@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { reverseConsonants } from "./examples";
+import { reverseConsonants } from "./reverseConsonants";
 
 describe("other examples", () => {
   describe("reverse consonants", () => {
